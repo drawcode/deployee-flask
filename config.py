@@ -12,7 +12,7 @@ CSRF_ENABLED and CSRF_SESSION_KEY are protecting against form post fraud
 RECAPTCHA_* WTForms comes with a RecaptchaField ready to use... just need to go to recaptcha website and get your public and private key.
 """
 
-DEBUG = False
+DEBUG = True
 
 ADMINS = frozenset(['youremail@yourdomain.com'])
 SECRET_KEY = 'SecretKeyForSessionSigning'
