@@ -6,16 +6,15 @@ app.config.from_object('config')
 
 db = SQLAlchemy(app)
 
-@mod.route('/', methods=['GET', 'POST'])
-def view_main(error):
-    return render_template('main.html')
-
 @app.errorhandler(404)
 def not_found(error):
     return render_template('404.html'), 404
 
 from app.users.views import mod as usersModule
 app.register_blueprint(usersModule)
+
+from app.main.views import mod as mainModule
+app.register_blueprint(mainModule)
 
 # Later on you'll import the other blueprints the same way:
 #from app.comments.views import mod as commentsModule
