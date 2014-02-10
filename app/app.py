@@ -20,7 +20,7 @@ app.debug = True
 ## METHODS
 
 def response_output(obj):
-	return json.dumps(obj)
+    return json.dumps(obj)
 
 def load_data_from_string(json_string):
     return json.loads(json_string)
@@ -40,7 +40,7 @@ def parse_data(path):
 def util_makepath(path):
 
     """ creates missing directories for the given path and
-	returns a normalized absolute version of the path.
+    returns a normalized absolute version of the path.
 
     - if the given path already exists in the filesystem
       the filesystem is not modified.
@@ -59,18 +59,18 @@ def util_makepath(path):
 
 ## -----------------------------------------------------------------------------
 ## APP ##
-	
+    
 @app.route('/<path:path>')
 def route_path(path):
-	context = {}
-	context["settings"] = webAppSettings
-	return render_template('main.htm', **context)
+    context = {}
+    context["settings"] = webAppSettings
+    return render_template('main.htm', **context)
 
 @app.route('/')
 def route_root():
-	context = {}
-	context["settings"] = webAppSettings
-	return render_template('main.htm', **context)
+    context = {}
+    context["settings"] = webAppSettings
+    return render_template('main.htm', **context)
 
 ## -----------------------------------------------------------------------------
 ## ERRORS ##
@@ -83,4 +83,4 @@ def page_not_found(error):
 ## DEV ##
 
 if __name__ == '__main__':
-	app.run(port=8080)
+    app.run(port=8080)
