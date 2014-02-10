@@ -6,6 +6,10 @@ app.config.from_object('config')
 
 db = SQLAlchemy(app)
 
+@mod.route('/', methods=['GET', 'POST'])
+def view_main(error):
+    return render_template('main.html')
+
 @app.errorhandler(404)
 def not_found(error):
     return render_template('404.html'), 404
