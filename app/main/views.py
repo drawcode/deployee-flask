@@ -6,8 +6,8 @@ from app.main.forms import RegisterForm, LoginForm
 from app.main.models import User
 from app.main.decorators import requires_login
 
-mod = Blueprint('main', __name__, url_prefix='/')
+main = Blueprint('main', __name__, url_prefix='/')
 
-@mod.route('/')
+@main.route('/')
 def home():
     return render_template("main.html")

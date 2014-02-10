@@ -6,14 +6,14 @@ from app.users.forms import RegisterForm, LoginForm
 from app.users.models import User
 from app.users.decorators import requires_login
 
-mod = Blueprint('users', __name__, url_prefix='/users')
+users = Blueprint('users', __name__, url_prefix='/users')
 
-@mod.route('/me/')
+@users.route('/me/')
 @requires_login
 def home():
     return render_template("users/profile.html", user=g.user)
 
-@mod.before_request
+@users.before_request
 def before_request():
     """
     pull user's profile from the database before every request are treated
@@ -22,7 +22,7 @@ def before_request():
     if 'user_id' in session:
         g.user = User.query.get(session['user_id']);
 
-@mod.route('/login/', methods=['GET', 'POST'])
+@users.route('/login/', methods=['GET', 'POST'])
 def login():
     """
     Login form
@@ -41,7 +41,7 @@ def login():
         flash('Wrong email or password', 'error-message')
     return render_template("users/login.html", form=form)
 
-@mod.route('/register/', methods=['GET', 'POST'])
+@users.route('/register/', methods=['GET', 'POST'])
 def register():
     """
     Registration Form
